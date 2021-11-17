@@ -130,7 +130,7 @@ async def netdisk_searching(bot: Bot, event: Event, state: T_State):
                         FROM BAIDU
                         WHERE NAME LIKE (?)
                         ORDER BY ID;
-                        ''',NAME)
+                        ''', NAME)
         listlen = len(list(cursor))
         # listlen 为资源条数
         if not listlen:
@@ -144,7 +144,7 @@ async def netdisk_searching(bot: Bot, event: Event, state: T_State):
                             FROM BAIDU
                             WHERE NAME LIKE (?)
                             ORDER BY ID;
-                            ''',NAME)
+                            ''', NAME)
             total_send = 1
             for info in cursor:
                 msg = str(total_send) +".  "
