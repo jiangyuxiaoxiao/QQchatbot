@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 import nonebot
 from nonebot import require
+from nonebot import export
 import sqlite3
 import asyncio
 from nonebot import on_command
@@ -12,9 +13,9 @@ from nonebot.adapters.cqhttp import Bot, Event
 # 定时器
 scheduler = require("nonebot_plugin_apscheduler").scheduler
 # 群事件处理
-group_handler = on_notice(priority=15)
+group_handler = on_notice(priority=15, block=False)
 # 指令处理
-command_handler = on_command("数据库刷新", priority=10)
+command_handler = on_command("数据库刷新", priority=10, block= False)
 
 
 # 定期更新数据库 更新群列表及用户列表
@@ -214,3 +215,9 @@ async def refresh_user_database(bot: Bot, event: Event, state: T_State):
     cursor.close()
     connect.commit()
     connect.close()
+
+# 导出数据库刷新函数
+refresh = refresh_user_database
+export().refresh = refresh
+
+

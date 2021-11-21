@@ -9,9 +9,12 @@
 [go-cqhttp文档](https://docs.go-cqhttp.org/)  
 [nonebot2文档](https://v2.nonebot.dev/)
 
-**网站wiki**  
+**网站wiki （项目的可行性分析报告 需求分析报告 项目任务人员分工 计划进度等）**  
 [QQchabot-manager](https://亚托莉.com)
 
+
+
+# 项目说明
 **一.词库格式**  
 在bot初始化时，bot从/atri/Dictionary/index.json文件中读取词库文件的目录，先读取的词库文件**优先级更高**，不会被后读取的词库覆盖。index.json文件如下所示：  
 ```json
@@ -44,4 +47,5 @@
 + `need_at`：@触发，只有当@机器人才能触发机器人的相应动作
 + `multi_reply`：随机回复，当回复的词条多于1时为`true`，机器人会从其中随机挑选一条进行回复。
 + `need_attitude`：好感度要求，只有当好感度等级>=对应的值时才会触发词条
+
 

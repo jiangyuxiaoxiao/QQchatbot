@@ -10,6 +10,7 @@
       <excludeFolder url="file://$MODULE_DIR$/atri/plugins/nonebot_plugin_apscheduler" />
       <excludeFolder url="file://$MODULE_DIR$/atri/plugins/nonebot_plugin_gamedraw" />
       <excludeFolder url="file://$MODULE_DIR$/Bot_data/酷q词库大全" />
+      <excludeFolder url="file://$MODULE_DIR$/Bot_data/Image" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.8 (Atri)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
