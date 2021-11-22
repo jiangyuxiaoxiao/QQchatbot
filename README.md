@@ -13,7 +13,6 @@
 [QQchabot-manager](https://亚托莉.com)
 
 
-
 # 项目说明
 **一.词库格式**  
 在bot初始化时，bot从/atri/Dictionary/index.json文件中读取词库文件的目录，先读取的词库文件**优先级更高**，不会被后读取的词库覆盖。index.json文件如下所示：  
