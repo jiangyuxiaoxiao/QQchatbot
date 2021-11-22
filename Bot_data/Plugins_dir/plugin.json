@@ -1,0 +1,18 @@
+{
+  "Plugin":
+  {
+    "Dir": [
+      "nonebot_plugin_apscheduler",
+      "nonebot_plugin_gamedraw",
+      "auditing",
+      "baidu_cloud_disk_out",
+      "database_management",
+      "genshin",
+      "normal_reply",
+      "to_cocogoat",
+      "waifu",
+      "60s"
+    ]
+  }
+
+}
