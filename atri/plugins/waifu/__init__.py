@@ -1,12 +1,11 @@
 from nonebot import on_command
-from nonebot.rule import to_me
 from nonebot.typing import T_State
 from nonebot.adapters import Bot, Event
 import random
 
 
 #注册一个事件响应器，事件类型为command，
-waifu=on_command("获取老婆",priority=1)
+waifu=on_command("获取老婆",priority=240,block=False)
 
 @waifu.handle()
 async def test_handle(bot: Bot, event: Event, state: T_State):

@@ -6,8 +6,8 @@ from nonebot.adapters.cqhttp import Bot, Event
 
 
 # 指令处理
-command_handler = on_command("网盘资源", priority=50, block=True)
-search_handler = on_command("网盘检索", priority=50, block=True)
+command_handler = on_command("网盘资源", priority=250, block=True)
+search_handler = on_command("网盘检索", priority=250, block=True)
 
 @command_handler.handle()
 async def netdisk_out_menu(bot: Bot, event: Event, state: T_State):
