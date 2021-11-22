@@ -7,6 +7,8 @@ import nonebot
 from nonebot.adapters.cqhttp import Bot as CQHTTPBot
 from load_dictionary import dictionary_initial
 import json
+import sys
+sys.path.append("./atri/plugins")
 # Custom your logger
 # 
 # from nonebot.log import logger, default_format
