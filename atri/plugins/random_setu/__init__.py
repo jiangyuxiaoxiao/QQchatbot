@@ -6,6 +6,7 @@ from nonebot import on_command,on_message
 from nonebot.rule import Rule
 from nonebot.typing import T_State
 from nonebot.adapters.cqhttp import Bot, Event
+from nonebot.permission import SUPERUSER
 import random
 
 # Ruler
@@ -20,8 +21,8 @@ def setu_checker():
                     return True
     return Rule(setu_checker)
 
-get_setu = on_message(rule=setu_checker(),block=False)
-get_setu_num = on_command("色图数量",block=False)
+get_setu = on_message(rule=setu_checker(),block=False,permission=SUPERUSER)
+get_setu_num = on_command("色图数量",block=False,permission=SUPERUSER)
 filelist = []
 flag = 0
 folder = "D:\\Data\\video\\photo"
