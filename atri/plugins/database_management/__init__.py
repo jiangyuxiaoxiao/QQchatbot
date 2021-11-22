@@ -13,9 +13,9 @@ from nonebot.adapters.cqhttp import Bot, Event
 # 定时器
 scheduler = require("nonebot_plugin_apscheduler").scheduler
 # 群事件处理
-group_handler = on_notice(priority=15, block=False)
+group_handler = on_notice(priority=3, block=False)
 # 指令处理
-command_handler = on_command("数据库刷新", priority=10, block= False)
+command_handler = on_command("数据库刷新", priority=3, block= False)
 
 
 # 定期更新数据库 更新群列表及用户列表

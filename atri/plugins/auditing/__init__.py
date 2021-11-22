@@ -11,9 +11,9 @@ import requests
 # 调用api的url，详情可以看百度云的技术文档
 request_url = "https://aip.baidubce.com/rest/2.0/solution/v1/text_censor/v2/user_defined"
 # 规则 ：当@亚托莉时触发
-auditing = on_message(rule=to_me(),priority=10,block=False)
+auditing = on_message(rule=to_me(),priority=230,block=False)
 # 百度api的acess_token是有时间限制的，通过该函数刷新acess_token
-get_access = on_command("接口获取",permission=SUPERUSER,priority=500,block=False)
+get_access = on_command("接口获取",permission=SUPERUSER,priority=230,block=False)
 # 本地存储的access_token,一般有效期为三十天
 access_token = "24.b49f59c9e074b4a42894e3cdaa0e74bb.2592000.1639907878.282335-25163869"
 
