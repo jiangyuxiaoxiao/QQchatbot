@@ -45,10 +45,10 @@
     {
       "is_keyword": false,
       "need_at": false,
-      "msg": ["晚安，好梦。明天还能见到你吗？夏生先生"],
+      "msg": ["晚安，好梦。"],
       "need_attitude": 1000,
       "img": "atri2.jpg",
-      "sound": ""
+      "sound": "......那么今晚的夏生先生就会变成爱撒娇的小夏吧！放马过来吧！.mp3"
     },
     {
       "is_keyword": false,
@@ -61,6 +61,14 @@
   ],
   "早安":
   [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["啊......夏生先生，早上好。"],
+      "need_attitude": 1000,
+      "img": "atri11.jpg",
+      "sound": "啊......夏生先生，早上好。昨晚也很激烈呢.mp3"
+    },
     {
       "is_keyword": false,
       "need_at": false,
@@ -119,10 +127,10 @@
     {
       "is_keyword": true,
       "need_at": false,
-      "msg": ["萝卜子是对仿生人的蔑称！"],
+      "msg": ["哼，萝卜子是对机器人的蔑称！"],
       "need_attitude": 0,
       "img": "atri13.jpg",
-      "sound": ""
+      "sound": "萝卜子是对机器人的蔑称！.mp3"
     }
   ],
   "对战":
@@ -265,6 +273,17 @@
       "sound": ""
     }
   ],
+  "要":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["不要"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": "不要.mp3"
+    }
+  ],
   "椰羊":
   [
     {
@@ -318,6 +337,17 @@
       "need_attitude": 0,
       "img": "atri17.jpg",
       "sound": ""
+    }
+  ],
+  "机器人":
+  [
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["哼哼哼~我可是高性能的"],
+      "need_attitude": 0,
+      "img": "atri17.jpg",
+      "sound": "哼哼哼~我可是高性能的.mp3"
     }
   ],
   "测试":
