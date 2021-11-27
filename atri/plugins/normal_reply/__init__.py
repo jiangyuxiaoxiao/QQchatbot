@@ -97,7 +97,7 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
 
                     # 若有多个匹配则随机挑选
                     msgs = reply["msg"]
-                    msgnum = random.randint(0, len(msgs))
+                    msgnum = random.randint(0, len(msgs)-1)
                     msg = msgs[msgnum]
                     # 如果是群聊
                     if message_type == 'group':
