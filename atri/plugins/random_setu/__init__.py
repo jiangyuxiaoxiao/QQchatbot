@@ -27,6 +27,7 @@ filelist = []
 flag = 0
 folder = "D:\\Data\\video\\photo"
 imgType_list = {'jpg','bmp','png','jpeg','rgb','tif'}
+setu_status = 0
 
 def findAllFile(base):
     for root, ds, fs in os.walk(base):
@@ -37,6 +38,9 @@ def findAllFile(base):
 
 @get_setu.handle()
 async def get_setu(bot: Bot, event: Event, state: T_State):
+    global setu_status
+    if setu_status == 0:
+        return
     if event.post_type == "message":
         if event.message_type == "group":
             group_id = event.group_id

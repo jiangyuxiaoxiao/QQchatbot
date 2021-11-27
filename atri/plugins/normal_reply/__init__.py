@@ -22,13 +22,15 @@ reply = on_message(priority = 500, block=False)
 # 全匹配回复
 @reply.handle()
 async def normal_reply(bot: Bot, event: Event, state: T_State):
-    msg = event.raw_message
+    event_msg = event.raw_message
     message_type = ""
     # 群聊信息标志
     if event.message_type == 'group':
         message_type = 'group'
         group_id = event.group_id
         user_id = (event.user_id,)
+        if event_msg == "？":
+            return
     # 私聊信息标志
     if event.message_type == 'private':
         message_type = 'private'
@@ -76,10 +78,10 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
         # 应该先确定是否有key匹配的 然后精确搜索范围
         for key in dictionary:
             # 关键词在语句中
-            if key in msg:
+            if key in event_msg:
                 is_keyword = 0
                 # 如果是关键字型触发
-                if not msg == key:
+                if not event_msg == key:
                     is_keyword = 1
 
                 # 从上至下寻找符合条件的回复
@@ -105,13 +107,26 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
                     if not reply["img"] == "":
                         img = ".\\Bot_data\\Image\\" + reply["img"]
                         img = os.path.abspath(img)
-                        img =urllib.request.pathname2url(img)
+                        img = urllib.request.pathname2url(img)
                         img = "file:" + img
                         msg = msg + "[CQ:image,file={}]".format(img)
+
+                    # 检查是否有语音
+                    if not reply["sound"] == "":
+                        sound = ".\\Bot_data\\Sound\\Sound\\" + reply["sound"]
+                        sound = os.path.abspath(sound)
+                        sound = urllib.request.pathname2url(sound)
+                        sound = "file:" + sound
+                        msg2 =  "[CQ:record,file={}]".format(sound)
+
                     # 如果是群聊
                     if message_type == 'group':
                         await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+                        if not reply["sound"] == "":
+                            await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg2})
                     else:
                         await bot.call_api("send_private_msg", **{"user_id": user_id, "message": msg})
+                        if not reply["sound"] == "":
+                            await bot.call_api("send_private_msg", **{"group_id": group_id, "message": msg2})
                     break  # 只回复好感度最高的一句
         return

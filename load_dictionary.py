@@ -23,3 +23,5 @@ def dictionary_initial():
                     if sentence not in dictionary:
                         dictionary[sentence] = dict_piece[sentence]
 
+        print("当前词条数: " + str(len(dictionary)))
+

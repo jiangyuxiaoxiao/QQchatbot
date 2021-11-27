@@ -73,8 +73,8 @@ cocogoat_find_corruption = on_message(priority=300, block=False)
 @scheduler.scheduled_job('cron',hour = '*/6')
 async def scheduled_xiuxian():
     global status
-    if status == "autofight":
-        return
+    #if status == "autofight":
+        #return
     bot = nonebot.get_bot()
     group_id = 974539308
     msg = "开始修仙"
@@ -178,13 +178,14 @@ async def atri_fight_reimu(bot: Bot, event: Event, state: T_State):
     group_id = 974539308
     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
 
-@scheduler.scheduled_job('interval',hours = 1)
+@scheduler.scheduled_job('cron',hour = "*/1",minute ="15")
 async def scheduled_fight():
     bot = nonebot.get_bot()
     global status
     if status == "autofight":
         group_id = 974539308
         msg = "对战[CQ:at,qq=2708403877]"
+        await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
         global has_corrupt
         await asyncio.sleep(10)
         if not has_corrupt == 1:
@@ -294,6 +295,10 @@ async def find_corruption(bot:Bot, event:Event, state: T_State):
                     if msg == "你要对无辜的路人下手吗？真可耻！":
                         has_corrupt = 1
                     if msg == "鞭尸是不道德的！":
+                        has_corrupt = 1
+                    if msg == "你还没有进行中的战斗哦":
+                        has_corrupt = 1
+                    if msg == "你处于对战冷却期哦":
                         has_corrupt = 1
 
 '''

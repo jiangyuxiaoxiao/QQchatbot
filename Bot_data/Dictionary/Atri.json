@@ -6,14 +6,16 @@
       "need_at": false,
       "msg": ["螃蟹！亚托莉想吃螃蟹！"],
       "need_attitude": 1000,
-      "img": "atri10.jpg"
+      "img": "atri10.jpg",
+      "sound": ""
     },
     {
       "is_keyword": false,
       "need_at": false,
       "msg": ["托莉今天不想吃"],
       "need_attitude": 0,
-      "img": "atri1.jpg"
+      "img": "atri1.jpg",
+      "sound": ""
     }
   ],
   "亚托莉":
@@ -23,7 +25,8 @@
       "need_at": false,
       "msg": ["亚托莉在！"],
       "need_attitude": 0,
-      "img": "atri10.jpg"
+      "img": "atri10.jpg",
+      "sound": ""
     }
   ],
   "亚托莉！":
@@ -33,7 +36,8 @@
       "need_at": false,
       "msg": ["亚托莉听见啦！"],
       "need_attitude": 0,
-      "img": "atri1.jpg"
+      "img": "atri1.jpg",
+      "sound": ""
     }
   ],
   "晚安":
@@ -43,14 +47,16 @@
       "need_at": false,
       "msg": ["晚安，好梦。明天还能见到你吗？夏生先生"],
       "need_attitude": 1000,
-      "img": "atri2.jpg"
+      "img": "atri2.jpg",
+      "sound": ""
     },
     {
       "is_keyword": false,
       "need_at": false,
       "msg": ["晚安~"],
       "need_attitude": 0,
-      "img": "atri3.jpg"
+      "img": "atri3.jpg",
+      "sound": ""
     }
   ],
   "早安":
@@ -60,7 +66,8 @@
       "need_at": false,
       "msg": ["早啊~咕噜咕噜"],
       "need_attitude": 0,
-      "img": "atri11.jpg"
+      "img": "atri11.jpg",
+      "sound": ""
     }
   ],
   "色图":
@@ -70,7 +77,8 @@
       "need_at": false,
       "msg": ["不可以色色！！"],
       "need_attitude": 0,
-      "img": "atri12.jpg"
+      "img": "atri12.jpg",
+      "sound": ""
     }
   ],
   "涩图":
@@ -80,7 +88,236 @@
       "need_at": false,
       "msg": ["不可以涩涩！！"],
       "need_attitude": 0,
-      "img": "001.gif"
+      "img": "001.gif",
+      "sound": ""
+    }
+  ],
+  "色色":
+  [
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["不可以色色！！"],
+      "need_attitude": 0,
+      "img": "001.gif",
+      "sound": ""
+    }
+  ],
+  "地球":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["。。。地球，也包括我吗？"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "萝卜子":
+  [
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["萝卜子是对仿生人的蔑称！"],
+      "need_attitude": 0,
+      "img": "atri13.jpg",
+      "sound": ""
+    }
+  ],
+  "对战":
+  [
+    {
+      "is_keyword": true,
+      "need_at": true,
+      "msg": ["哼哼哼，这就是战斗机器人的实力"],
+      "need_attitude": 0,
+      "img": "atri14.jpg",
+      "sound": ""
+    }
+  ],
+  "熬夜冠军":
+  [
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["快睡，别熬夜啦"],
+      "need_attitude": 0,
+      "img": "atri16",
+      "sound": ""
+    },
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["这么玩不睡，就等着猝死吧！哼"],
+      "need_attitude": 0,
+      "img": "atri15",
+      "sound": ""
+    }
+  ],
+  "是":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["不是"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "不是":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["是"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "对":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["不对"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "不对":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["对"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "好":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["不好"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "不好":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["好"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "行":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["不行"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "不行":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["行"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "有":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["没有"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "没有":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["有"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "椰羊":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["来点涩图"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "？":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": [""],
+      "need_attitude": 0,
+      "img": "atri_asking.jpg",
+      "sound": "......嗯？.mp3"
+    }
+  ],
+  "?":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": [""],
+      "need_attitude": 0,
+      "img": "atri_asking.jpg",
+      "sound": ""
+    }
+  ],
+  "好耶":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["好耶好耶！"],
+      "need_attitude": 0,
+      "img": "atri10.jpg",
+      "sound": ""
+    }
+  ],
+  "啊这":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["啊这"],
+      "need_attitude": 0,
+      "img": "atri17.jpg",
+      "sound": ""
     }
   ],
   "测试":
@@ -90,7 +327,8 @@
       "need_at": false,
       "msg": ["这不是一条消息"],
       "need_attitude": 0,
-      "img": "atri1.jpg"
+      "img": "atri1.jpg",
+      "sound": ""
     }
   ]
 }
