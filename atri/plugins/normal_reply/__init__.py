@@ -1,5 +1,6 @@
 import random
-
+import urllib.request
+import os
 from nonebot import on_message
 from nonebot.rule import to_me
 from nonebot.typing import T_State
@@ -99,6 +100,14 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
                     msgs = reply["msg"]
                     msgnum = random.randint(0, len(msgs)-1)
                     msg = msgs[msgnum]
+
+                    # 检查是否有图片
+                    if not reply["img"] == "":
+                        img = ".\\Bot_data\\Image\\" + reply["img"]
+                        img = os.path.abspath(img)
+                        img =urllib.request.pathname2url(img)
+                        img = "file:" + img
+                        msg = msg + "[CQ:image,file={}]".format(img)
                     # 如果是群聊
                     if message_type == 'group':
                         await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})

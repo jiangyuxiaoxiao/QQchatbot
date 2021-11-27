@@ -1,0 +1,19 @@
+{
+  "托莉今天吃什么":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["螃蟹！亚托莉想吃螃蟹！"],
+      "need_attitude": 1000,
+      "img": "atri10.jpg"
+    },
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["托莉今天不想吃"],
+      "need_attitude": 0,
+      "img": "atri1.jpg"
+    }
+  ]
+}

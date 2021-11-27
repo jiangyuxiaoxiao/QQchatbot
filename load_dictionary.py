@@ -14,7 +14,8 @@ def dictionary_initial():
 
         # 遍历读取每个词库
         for dictionary_name in index:
-            with open(dictionary_name, encoding="utf-8") as dict_file:
+            dictionary_file = ".\\Bot_data\\Dictionary\\" + dictionary_name + ".json"
+            with open(dictionary_file, encoding="utf-8") as dict_file:
                 dict_piece = json.load(dict_file)
                 # 遍历插入字典
                 for sentence in dict_piece:
