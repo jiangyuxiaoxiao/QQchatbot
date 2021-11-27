@@ -44,7 +44,8 @@ def reimu_checker2():
         if "亚托莉" in msg:
             if "成功击杀" in msg:
                 if "蕾姆" in msg or "拉姆" in msg:
-                    return True
+                    if event.user_id == 3337549065:
+                        return True
     return Rule(in_reimu_checker)
 
 def reimu_checker3():
@@ -66,6 +67,7 @@ cocogoat_daily = on_command("托莉日常",priority=400, block=False, permission
 cocogoat_tritri = on_command("托莉剑法",priority=500,block=False,permission=SUPERUSER)
 cocogoat_get_bottle = on_message(rule=coco_checker2(),block=False,priority=250,permission=SUPERUSER)
 atri_fight_reimu = on_message(rule=reimu_checker3(),block=False,priority=500)
+atri_escape = on_message(rule=reimu_checker2(),block=False,priority=500)
 cocogoat_find_corruption = on_message(priority=300, block=False)
 # 定时修仙
 @scheduler.scheduled_job('cron',hour = '*/6')
@@ -141,7 +143,13 @@ async def run_run_run(bot: Bot, event: Event, state: T_State):
                         msg = "攻击[CQ:at,qq={}]".format(event.user_id)
                         await asyncio.sleep(5)
                         await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
-
+                        await asyncio.sleep(5)
+                        global has_corrupt
+                        if has_corrupt == 1:
+                            has_corrupt = 0
+                            msg = "逃跑"
+                            await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+                            return
                 else:
                     msg = "逃跑"
                     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
@@ -164,6 +172,35 @@ async def atri_fight_reimu(bot: Bot, event: Event, state: T_State):
     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
     await asyncio.sleep(1)
 
+@atri_escape.handle()
+async def atri_fight_reimu(bot: Bot, event: Event, state: T_State):
+    msg = "逃跑"
+    group_id = 974539308
+    await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+
+@scheduler.scheduled_job('interval',hours = 1)
+async def scheduled_fight():
+    bot = nonebot.get_bot()
+    global status
+    if status == "autofight":
+        group_id = 974539308
+        msg = "对战[CQ:at,qq=2708403877]"
+        global has_corrupt
+        await asyncio.sleep(10)
+        if not has_corrupt == 1:
+            msg = "攻击[CQ:at,qq=2708403877]"
+            await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+            await asyncio.sleep(1500)
+        else:
+            has_corrupt = 0
+            await asyncio.sleep(1500)
+        msg = "对战[CQ:at,qq=536322317]"
+        await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+        await asyncio.sleep(10)
+        if not has_corrupt == 1:
+            msg = "攻击[CQ:at,qq=536322317]"
+            await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+            await asyncio.sleep(1500)
 
 
 @cocogoat_daily.handle()

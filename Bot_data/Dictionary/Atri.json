@@ -16,8 +16,81 @@
       "img": "atri1.jpg"
     }
   ],
+  "亚托莉":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["亚托莉在！"],
+      "need_attitude": 0,
+      "img": "atri10.jpg"
+    }
+  ],
+  "亚托莉！":
+  [
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["亚托莉听见啦！"],
+      "need_attitude": 0,
+      "img": "atri1.jpg"
+    }
+  ],
+  "晚安":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["晚安，好梦。明天还能见到你吗？夏生先生"],
+      "need_attitude": 1000,
+      "img": "atri2.jpg"
+    },
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["晚安~"],
+      "need_attitude": 0,
+      "img": "atri3.jpg"
+    }
+  ],
+  "早安":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["早啊~咕噜咕噜"],
+      "need_attitude": 0,
+      "img": "atri11.jpg"
+    }
+  ],
+  "色图":
+  [
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["不可以色色！！"],
+      "need_attitude": 0,
+      "img": "atri12.jpg"
+    }
+  ],
+  "涩图":
+  [
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["不可以涩涩！！"],
+      "need_attitude": 0,
+      "img": "001.gif"
+    }
+  ],
   "测试":
   [
-
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["这不是一条消息"],
+      "need_attitude": 0,
+      "img": "atri1.jpg"
+    }
   ]
 }
