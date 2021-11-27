@@ -55,7 +55,7 @@
       "need_at": false,
       "msg": ["晚安~"],
       "need_attitude": 0,
-      "img": "atri3.jpg",
+      "img": "atri3.png",
       "sound": ""
     }
   ],
@@ -303,7 +303,7 @@
       "msg": [""],
       "need_attitude": 0,
       "img": "atri_asking.jpg",
-      "sound": "......嗯？.mp3"
+      "sound": ""
     }
   ],
   "?":
@@ -314,7 +314,7 @@
       "msg": [""],
       "need_attitude": 0,
       "img": "atri_asking.jpg",
-      "sound": ""
+      "sound": "......嗯？.mp3"
     }
   ],
   "好耶":

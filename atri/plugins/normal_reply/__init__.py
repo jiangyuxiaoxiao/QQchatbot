@@ -29,8 +29,6 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
         message_type = 'group'
         group_id = event.group_id
         user_id = (event.user_id,)
-        if event_msg == "？":
-            return
     # 私聊信息标志
     if event.message_type == 'private':
         message_type = 'private'
