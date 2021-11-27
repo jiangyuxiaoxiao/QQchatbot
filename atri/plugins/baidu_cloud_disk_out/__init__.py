@@ -3,11 +3,12 @@ import sqlite3
 from nonebot import on_command
 from nonebot.typing import T_State
 from nonebot.adapters.cqhttp import Bot, Event
-
-
+from nonebot.permission import SUPERUSER
+import asyncio
 # 指令处理
 command_handler = on_command("网盘资源", priority=250, block=True)
 search_handler = on_command("网盘检索", priority=250, block=True)
+random_out = on_command("托莉漂流",priority=300,block=True,permission=SUPERUSER)
 
 @command_handler.handle()
 async def netdisk_out_menu(bot: Bot, event: Event, state: T_State):
@@ -40,7 +41,7 @@ async def netdisk_out_menu(bot: Bot, event: Event, state: T_State):
             for info in cursor:
                 msg = msg + str(info[0]) + ".  "
                 msg = msg + info[1] + "\n"
-                # 五条五条发送
+                # 十条十条发送
                 if not i % 10:
                     msg.rstrip()
                     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
@@ -162,7 +163,32 @@ async def netdisk_searching(bot: Bot, event: Event, state: T_State):
 
 
 
-
-
-
+@random_out.handle()
+async def random_out(bot: Bot, event: Event, state: T_State):
+    if event.message_type == "group":
+        group_id = event.group_id
+        connect = sqlite3.connect(".\\Bot_data\\SQLite\\BaiduCloudDisk.db")
+        # 创建游标
+        cursor = connect.cursor()
+        # 资源检索
+        cursor.execute('''
+                                SELECT *
+                                FROM BAIDU
+                                ORDER BY ID;
+                                ''')
+        total_send = 1
+        for info in cursor:
+                msg = "丢瓶子 " + "\n"
+                msg = msg + info[1] + ": \n"
+                msg = msg + "类型： " + info[6] + "\n"
+                msg = msg + "网盘链接： " + info[2] + "\n"
+                msg = msg + "提取码： " + info[3] + "\n"
+                msg = msg + "解压密码： " + info[4] + "\n"
+                msg = msg + "INFO： " + info[5] + "\n"
+                total_send = total_send + 1
+                await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+                await asyncio.sleep(20)
+        cursor.close()
+        connect.commit()
+        connect.close()
 

@@ -20,7 +20,7 @@ command_handler = on_command("数据库刷新", priority=3, block= False)
 
 # 定期更新数据库 更新群列表及用户列表
 # 为定期执行的任务，执行时间为传入的hour minute参数
-@scheduler.scheduled_job("cron", hour="00", minute="00")
+@scheduler.scheduled_job("cron", hour="02", minute="00")
 async def update_usersdata():
     # 传入bot对象
     bot = nonebot.get_bot()
@@ -135,6 +135,7 @@ async def refresh_user_database(bot: Bot, event: Event, state: T_State):
     connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
     # 创建游标
     cursor = connect.cursor()
+    ''' # 取消函数中的权限审查，由调用者进行审查
     # 权限审查
     caller = event.user_id
     caller = (caller,)
@@ -149,6 +150,7 @@ async def refresh_user_database(bot: Bot, event: Event, state: T_State):
             for c in cursor:
                 if not c[0] == 0:
                     return
+    '''
     # 群组用户更新 群更新
     # 遍历群组
     groups = await bot.call_api("get_group_list")

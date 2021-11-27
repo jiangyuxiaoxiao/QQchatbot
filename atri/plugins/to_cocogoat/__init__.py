@@ -24,6 +24,15 @@ def coco_checker1():
             if "168934818" in msg:
                 return True
     return Rule(inner_checker)
+
+def coco_checker2():
+    async def inner_checker(bot: Bot, event: Event, state: T_State) -> bool:
+        msg = event.get_message()
+        msg = str(msg)
+        if "捞瓶五连" in msg:
+            return True
+    return Rule(inner_checker)
+
 rule2 = keyword("查看角色")
 # checker
 has_corrupt = 0
@@ -36,8 +45,9 @@ cocogoat_forbid_fighting = on_message(rule=to_me(), priority=1, block=False)
 cocogoat_find_corruption = on_message(priority=300, block=False)
 cocogoat_defend = on_message(priority=300, block=False)
 cocogoat_daily = on_command("托莉日常",priority=400, block=False, permission=SUPERUSER)
-
-
+cocogoat_tritri = on_command("托莉剑法",priority=500,block=False,permission=SUPERUSER)
+# cocogoat_master_repeat = on_message(permission=SUPERUSER,priority=450,block=False)
+cocogoat_get_bottle = on_message(rule=coco_checker2(),block=False,priority=250)
 
 @scheduler.scheduled_job('cron',hour = '*/6')
 async def scheduled_xiuxian():
@@ -206,13 +216,13 @@ async def daily(bot:Bot, event:Event, state: T_State):
     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
     for i in range(1,60):
         msg = "？"
-        await asyncio.sleep(20)
+        await asyncio.sleep(120)
         await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
     msg = "好感度上限"
     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
 
 
-@scheduler.scheduled_job('cron',hour = '3', minute="00")
+@scheduler.scheduled_job('cron',hour = '03', minute="00")
 async def scheduled_job():
     group_id = 974539308
     bot = nonebot.get_bot()
@@ -224,9 +234,65 @@ async def scheduled_job():
     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
     msg = "查看角色"
     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
-    for i in range(1,60):
+    for i in range(1,120):
         msg = "？"
         await asyncio.sleep(20)
         await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
     msg = "好感度上限"
     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+
+
+@cocogoat_tritri.handle()
+async def func_atri_bomb(bot: Bot, event: Event, state: T_State):
+    if event.message_type == "group":
+        message = str(event.message)
+        group_id = event.group_id
+        if not message == "":
+            state["QID"] = message
+
+@cocogoat_tritri.got("QID")
+async def tritri(bot:Bot, event:Event, state: T_State):
+    group_id = event.group_id
+    QID = state["QID"]
+    QID = QID.replace("[CQ:at,qq=", "")
+    QID = QID.replace("]", "")
+    QID = int(QID)
+    msg = " アトリは、高性能ですから!"
+    await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+    file = "file:///C:/Users/65416/Desktop/atri_iron_fist.jpg"
+    msg = "吃我组合鱼雷拳！[CQ:image,file={}]".format(file)
+    # await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+    msg = "[CQ:poke,qq={}]".format(QID)
+    for i in range(1,10):
+        await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+        await asyncio.sleep(20)
+
+'''
+@cocogoat_master_repeat.handle()
+async def cocogoat_master_repeat(bot:Bot, event:Event, state: T_State):
+    if event.message_type == "group":
+        msg = str(event.message)
+        if "蕾姆" in msg:
+            msg = msg.replace("蕾姆","拉姆")
+        elif "拉姆" in msg:
+            msg = msg.replace("拉姆","蕾姆")
+        if "www" in msg:
+            msg = msg.replace("www","w w w")
+        if "http" in msg:
+            msg = msg.replace("http","h t t p")
+        if "." in msg:
+            msg = msg.replace(".","。")
+        group_id = event.group_id
+        await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+'''
+
+@cocogoat_get_bottle.handle()
+async def cocogoat_get_bottle(bot:Bot, event:Event, state: T_State):
+    if event.post_type == "message":
+        if event.message_type == "group":
+            if event.group_id == 974539308:
+                group_id = 974539308
+                msg = "捞瓶子"
+                for i in range(1, 6):
+                    await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+                    await asyncio.sleep(0.5)

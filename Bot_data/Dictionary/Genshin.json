@@ -1,20 +1,31 @@
 {
   "刻晴今天吃什么":
-  {
-    "is_keyword": false,
-    "need_at": false,
-    "multi_reply": false,
-    "reply": ["剑光如我，斩尽牛杂"],
-    "need_attitude": 0,
-    "need_permission": 0
-  },
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": [
+        "剑光如我，斩尽牛杂"
+      ],
+      "need_attitude": 1000
+    },
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": [
+        "阿晴今天不想吃"
+      ],
+      "need_attitude": 0
+    }
+  ],
   "可莉":
-  {
+  [
+    {
     "is_keyword": false,
     "need_at": false,
-    "multi_reply": true,
-    "reply": ["哒哒哒","啦啦啦","蹦蹦炸弹","轰轰火花"],
-    "need_attitude": 0,
-    "need_permission": 0
-  }
+    "msg": ["哒哒哒","啦啦啦","蹦蹦炸弹","轰轰火花"],
+    "need_attitude": 0
+    }
+  ]
+
 }

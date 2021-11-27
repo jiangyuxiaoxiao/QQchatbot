@@ -21,8 +21,8 @@ def setu_checker():
                     return True
     return Rule(setu_checker)
 
-get_setu = on_message(rule=setu_checker(),block=False,permission=SUPERUSER)
-get_setu_num = on_command("色图数量",block=False,permission=SUPERUSER)
+get_setu = on_message(rule=setu_checker(),block=False,permission=SUPERUSER,priority=250)
+get_setu_num = on_command("色图数量",block=False,permission=SUPERUSER,priority=250)
 filelist = []
 flag = 0
 folder = "D:\\Data\\video\\photo"
