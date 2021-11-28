@@ -284,6 +284,17 @@
       "sound": "不要.mp3"
     }
   ],
+  "确实":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["雀食"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
   "椰羊":
   [
     {
