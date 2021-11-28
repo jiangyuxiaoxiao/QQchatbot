@@ -86,7 +86,7 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
                 for reply in dictionary[key]:
                     # 检查是否需要@
                     if reply["need_at"] == True:
-                        if not to_me():
+                        if not event.to_me:
                             continue
                     # 检查好感度
                     if reply["need_attitude"] > attitude:

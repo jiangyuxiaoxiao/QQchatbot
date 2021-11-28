@@ -221,12 +221,13 @@ async def set_black_list_2(bot: Bot, event: Event, state: T_State):
     cursor.execute('''UPDATE USERS
                       SET PERMISSION = 3
                       WHERE QID = (?)''', user_id)
-    msg = "设置成功"
-    await bot.call_api("send_msg",
-                       **{"message_type": "group", "group_id": group_id, "message": "{}".format(msg)})
     connect.commit()
     cursor.close()
     connect.close()
+    msg = "设置成功"
+    group_id = event.group_id
+    await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+
 
 @set_group_black_list_on_command.handle()
 async def set_group_black_list(bot: Bot, event: Event, state: T_State):
@@ -268,7 +269,7 @@ async def set_group_black_list(bot: Bot, event: Event, state: T_State):
         connect.close()
         msg = "设置成功"
         group_id = event.group_id
-        await bot.call_api("send_msg",** {"message_type": "group", "group_id": group_id, "message": "{}".format(msg)})
+        await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
 
 
 
