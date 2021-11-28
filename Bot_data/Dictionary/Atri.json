@@ -313,7 +313,7 @@
       "need_at": false,
       "msg": [""],
       "need_attitude": 0,
-      "img": "atri_asking.jpg",
+      "img": "atri_asking2.jpg",
       "sound": ""
     }
   ],
@@ -324,7 +324,7 @@
       "need_at": false,
       "msg": [""],
       "need_attitude": 0,
-      "img": "atri_asking.jpg",
+      "img": "atri_asking2.jpg",
       "sound": "......嗯？.mp3"
     }
   ],
@@ -359,6 +359,33 @@
       "need_attitude": 0,
       "img": "atri10.jpg",
       "sound": "哼哼哼~我可是高性能的.mp3"
+    }
+  ],
+  "睡觉":
+  [
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["晚安~抱抱"],
+      "need_attitude": 2000,
+      "img": "atri2.jpg",
+      "sound": ""
+    },
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["晚安~需要亚托莉的高性能抱枕吗"],
+      "need_attitude": 1000,
+      "img": "",
+      "sound": "atri_yes1.png"
+    },
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["晚安~"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
     }
   ],
   "测试":
