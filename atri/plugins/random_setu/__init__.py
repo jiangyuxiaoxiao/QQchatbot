@@ -12,8 +12,7 @@ import random
 # Ruler
 def setu_checker():
     async def setu_checker(bot: Bot, event: Event, state: T_State) -> bool:
-        msg = event.get_message()
-        msg = str(msg)
+        msg = event.raw_message
         # if msg == "来点色图" or msg == "来点涩图" or msg == "色图" or msg == "涩图" or msg == "今日盲盒" :
         if "色图" in msg or "涩图" in msg or "盲盒" in msg:
             if event.message_type == "group":

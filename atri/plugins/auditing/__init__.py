@@ -54,6 +54,7 @@ async def auditing(bot: Bot, event: Event, state: T_State):
                 message = "[CQ:at,qq={}]".format(user_id) + message
                 await bot.call_api("send_msg",
                                    **{"message_type": "group", "group_id": group_id, "message": "{}".format(message)})
+            '''
             if  response["data"][0]["subType"] == 2:
                 message = "?"
                 await bot.call_api("send_msg",
@@ -64,6 +65,7 @@ async def auditing(bot: Bot, event: Event, state: T_State):
                 message = "傻X"
                 await bot.call_api("send_msg",
                                    **{"message_type": "group", "group_id": group_id,"message": "{}".format(message)})
+            '''
 
 
     if event.message_type == "private":

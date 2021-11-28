@@ -11,9 +11,9 @@ black_list_checker_command = on_command("",priority = 0,block=False)
 # 阻断message
 black_list_checker_message = on_message(priority = 0,block=False)
 # 设置黑名单
-set_black_list = on_command("设置黑名单",priority = 0,block=True)
+set_black_list_on_command = on_command("设置黑名单", priority = 0, block=True)
 # 设置群黑名单
-set_group_black_list = on_command("设置群黑名单",priority = 0,block=True)
+set_group_black_list_on_command = on_command("设置群黑名单", priority = 0, block=True)
 
 # 调用用户库刷新函数
 refresh = require("database_management").refresh
@@ -166,7 +166,7 @@ async def black_list_checker_message(bot: Bot, event: Event, state: T_State):
     connect.close()
 
 
-@set_black_list.handle()
+@set_black_list_on_command.handle()
 async def set_black_list_1(bot: Bot, event: Event, state: T_State):
     # 权限审查
     user_id = (event.user_id,)
@@ -176,7 +176,7 @@ async def set_black_list_1(bot: Bot, event: Event, state: T_State):
     cursor.execute('''SELECT PERMISSION
                       FROM USERS
                       WHERE QID = (?)''',user_id)
-    # 检查是否在表中
+    # 权限审核
     info = list(cursor)
     if len(info) == 0:
         await refresh(bot, event, state)
@@ -197,7 +197,7 @@ async def set_black_list_1(bot: Bot, event: Event, state: T_State):
     cursor.close()
     connect.close()
 
-@set_black_list.got("QID")
+@set_black_list_on_command.got("QID")
 async def set_black_list_2(bot: Bot, event: Event, state: T_State):
     QID = state["QID"]
     QID = QID.replace("[CQ:at,qq=", "")
@@ -221,11 +221,54 @@ async def set_black_list_2(bot: Bot, event: Event, state: T_State):
     cursor.execute('''UPDATE USERS
                       SET PERMISSION = 3
                       WHERE QID = (?)''', user_id)
+    msg = "设置成功"
+    await bot.call_api("send_msg",
+                       **{"message_type": "group", "group_id": group_id, "message": "{}".format(msg)})
     connect.commit()
     cursor.close()
     connect.close()
 
+@set_group_black_list_on_command.handle()
+async def set_group_black_list(bot: Bot, event: Event, state: T_State):
+    if event.message_type == "group":
+        group_id = (event.group_id,)
+        user_id = (event.user_id,)
+        connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+        # 创建游标
+        cursor = connect.cursor()
+        cursor.execute('''SELECT PERMISSION
+                          FROM USERS
+                          WHERE QID = (?)''', user_id)
+        # 权限审核
+        info = list(cursor)
+        if len(info) == 0:
+            await refresh(bot, event, state)
+            cursor.execute('''SELECT PERMISSION
+                              FROM USERS
+                              WHERE QID = (?)''', user_id)
+        if not info[0][0] == 0:
+            cursor.close()
+            connect.close()
+            return
 
+        # 检查群是否在表中
+            # 判断群是否在黑名单
+        cursor.execute('''SELECT *
+                          FROM GROUPS
+                          WHERE GROUPID = (?)  ''', group_id)
+        info = list(cursor)
+        if len(info) == 0:
+            await refresh(bot, event, state)
+        # 设置黑名单
+        cursor.execute('''UPDATE GROUPS
+                          SET PERMISSION = 3
+                          WHERE GROUPID = (?)''', group_id)
+        connect.commit()
+        cursor.close()
+        connect.close()
+        msg = "设置成功"
+        group_id = event.group_id
+        await bot.call_api("send_msg",** {"message_type": "group", "group_id": group_id, "message": "{}".format(msg)})
 
 
 
