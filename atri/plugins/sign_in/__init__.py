@@ -3,10 +3,11 @@ from nonebot import on_message,on_command
 from nonebot.typing import T_State
 from nonebot.adapters import Bot, Event
 from nonebot import require
-from nonebot.exception import StopPropagation
 from nonebot.rule import Rule
 import datetime
 import random
+import urllib.request
+import os
 
 def sign_in_checker():
     async def inner_sign_in_checker(bot: Bot, event: Event, state: T_State) -> bool:
@@ -50,13 +51,25 @@ async def daily_sign_in(bot: Bot, event: Event, state: T_State):
                       FROM USERS
                       WHERE QID = (?)''',user_id)
     info = list(cursor)
-    add_coin = random.randint(20, 100)
+    bonus = random.randint(0, 100)
+    print(bonus)
+    add_coin = random.randint(5, 100)
+    add_attitude = random.randint(1, 20)
+    if bonus == 100:
+        add_coin = 1000
+        add_attitude = 200
+    elif bonus >= 90:
+        add_coin = 200
+        add_attitude = 40
     coin = add_coin + info[0][1]
-    add_attitude = random.randint(1, 16)
     attitude = add_attitude + info[0][2]
     update_pack = (date, coin, attitude, event.user_id)
     user_id = event.user_id
     group_id = event.group_id
+    img = ".\\Bot_data\\Image\\atri_daily.jpg"
+    img = os.path.abspath(img)
+    img = urllib.request.pathname2url(img)
+    img = "file:" + img
     # 如果不在表中
     if info[0][0] == None:
         cursor.execute('''UPDATE USERS
@@ -74,7 +87,23 @@ async def daily_sign_in(bot: Bot, event: Event, state: T_State):
     connect.commit()
     cursor.close()
     connect.close()
-    msg = "[CQ:at,qq={}]签到成功~\n获得{}枚托莉币，当前金币{}。\n好感度+{}，当前好感度{}".format(user_id,add_coin,coin,add_attitude,attitude)
+    if bonus < 90:
+        msg = "[CQ:at,qq={}]签到成功~\n获得{}枚托莉币，当前托莉币{}。\n好感度+{}，当前好感度{}" \
+        "[CQ:image,file={}]".format(user_id,add_coin,coin,add_attitude,attitude,img)
+    elif bonus < 100:
+        img = ".\\Bot_data\\Image\\atri_yes1.png"
+        img = os.path.abspath(img)
+        img = urllib.request.pathname2url(img)
+        img = "file:" + img
+        msg = "[CQ:at,qq={}]签到大成功！(10%）\n获得{}枚托莉币，当前托莉币{}。\n好感度+{}，当前好感度{}" \
+              "[CQ:image,file={}]".format(user_id, add_coin, coin, add_attitude, attitude, img)
+    elif bonus == 100:
+        img = ".\\Bot_data\\Image\\atri10.jpg"
+        img = os.path.abspath(img)
+        img = urllib.request.pathname2url(img)
+        img = "file:" + img
+        msg = "[CQ:at,qq={}]签到大大成功！(1%）可恶！又被秀到了\n获得{}枚托莉币，当前托莉币{}。\n好感度+{}，当前好感度{}" \
+              "[CQ:image,file={}]".format(user_id, add_coin, coin, add_attitude, attitude, img)
     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
 
 
