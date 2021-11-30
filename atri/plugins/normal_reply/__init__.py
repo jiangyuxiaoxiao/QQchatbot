@@ -119,10 +119,13 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
 
                     # 如果是群聊
                     if message_type == 'group':
+                        group_id = event.group_id
+                        print(msg,group_id)
                         await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
                         if not reply["sound"] == "":
                             await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg2})
                     else:
+                        print(msg, user_id)
                         await bot.call_api("send_private_msg", **{"user_id": user_id, "message": msg})
                         if not reply["sound"] == "":
                             await bot.call_api("send_private_msg", **{"group_id": group_id, "message": msg2})

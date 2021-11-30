@@ -81,7 +81,7 @@
   "色图":
   [
     {
-      "is_keyword": true,
+      "is_keyword": false,
       "need_at": false,
       "msg": ["不可以色色！！"],
       "need_attitude": 0,
@@ -92,7 +92,7 @@
   "涩图":
   [
     {
-      "is_keyword": true,
+      "is_keyword": false,
       "need_at": false,
       "msg": ["不可以涩涩！！"],
       "need_attitude": 0,
@@ -103,7 +103,7 @@
   "色色":
   [
     {
-      "is_keyword": true,
+      "is_keyword": false,
       "need_at": false,
       "msg": ["不可以色色！！"],
       "need_attitude": 0,
