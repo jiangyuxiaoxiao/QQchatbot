@@ -2,7 +2,6 @@ import random
 import urllib.request
 import os
 from nonebot import on_message
-from nonebot.rule import to_me
 from nonebot.typing import T_State
 from nonebot.adapters.cqhttp import Bot, Event
 from load_dictionary import dictionary
