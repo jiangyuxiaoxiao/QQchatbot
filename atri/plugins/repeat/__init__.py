@@ -56,11 +56,14 @@ async def msg_counter(bot: Bot, event: Event, state: T_State):
                 if probabilty >= probnum :
                     user_counters[user].set_probability(0)
                     user_counters[user].set_count(0)
+                    msg.replace("你", "他")
+                    msg.replace("我","你")
+                    msg.replace("亚托莉","你")
                     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
                     return
                 else:
                     count = count + 1
-                    probabilty = probabilty + count * 1.375
+                    probabilty = probabilty + count * 0.125
                     if probabilty > 1000:
                         probabilty = 1000
                     user_counters[user].set_probability(probabilty)
@@ -83,7 +86,8 @@ async def msg_counter_checker(bot: Bot, event: Event, state: T_State):
                 user_counters[user] = UserCounter(user_id)
             probabilty = user_counters[user].probability()
             the_count = user_counters[user].counts()
-            msg = "啊啊啊！亚托莉不是复读机！\n当前已计数{}，{}复读概率{}%".format(the_count,user_name,probabilty/10)
+            str_probabilty = "%.3f"%(probabilty/10)
+            msg = "啊啊啊！亚托莉不是复读机！\n当前已计数{}，{}复读概率{}%".format(the_count,user_name,str_probabilty)
             await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
 
 

@@ -18,12 +18,22 @@ def sign_in_checker():
                     return True
     return Rule(inner_sign_in_checker)
 
+def get_coin():
+    async def inner_get_coin(bot: Bot, event: Event, state: T_State) -> bool:
+        if event.post_type == "message":
+            if event.message_type == "group":
+                msg = event.raw_message
+                if msg == "查看" or msg =="好感度":
+                    return True
+    return Rule(inner_get_coin)
+
+
 # 调用用户库刷新函数
 refresh = require("database_management").refresh
 
 # Handler
 daily_sign_in = on_message(priority=60,rule=sign_in_checker(),block=True)
-
+coin_checker = on_message(priority=61,rule=get_coin(),block=True)
 
 # handle
 @daily_sign_in.handle()
@@ -46,7 +56,6 @@ async def daily_sign_in(bot: Bot, event: Event, state: T_State):
     # 当前时间
     date = datetime.date.today()
     date = str(date)
-    #查看是否在表中
     cursor.execute('''SELECT LASTSIGN,GOLD,ATTITUDE
                       FROM USERS
                       WHERE QID = (?)''',user_id)
@@ -104,6 +113,44 @@ async def daily_sign_in(bot: Bot, event: Event, state: T_State):
         img = "file:" + img
         msg = "[CQ:at,qq={}]签到大大成功！(1%）可恶！又被秀到了\n获得{}枚托莉币，当前托莉币{}。\n好感度+{}，当前好感度{}" \
               "[CQ:image,file={}]".format(user_id, add_coin, coin, add_attitude, attitude, img)
+    await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
+
+@coin_checker.handle()
+async def coin_checker(bot: Bot, event: Event, state: T_State):
+    group_id = event.group_id
+    # 连接数据库
+    connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+    # 创建游标
+    cursor = connect.cursor()
+
+    # 获取用户信息
+    user_id = (event.user_id,)
+    # 存在性检查
+    cursor.execute('''SELECT *
+                          FROM USERS
+                          WHERE QID = (?)''', user_id)
+    if len(list(cursor)) == 0:
+        await refresh(bot, event, state)
+    cursor.execute('''SELECT LASTSIGN,GOLD,ATTITUDE
+                      FROM USERS
+                      WHERE QID = (?)''', user_id)
+    info = list(cursor)
+    last_sign = info[0][0]
+    if last_sign == None:
+        last_sign = "未签到"
+    gold = info[0][1]
+    attitude = info[0][2]
+    cursor.close()
+    connect.close()
+    event_msg = event.raw_message
+    msg = ""
+    if event_msg == "查看":
+        # 临时阻断
+        #if group_id == 974539308:
+            #return
+        msg = "当前你有{}枚托莉币哦~ 【暂时没做金币商店呢，后续会更新】\n亚托莉对你的好感度为{}哦~\n上次签到日期：{}".format(gold,attitude,last_sign)
+    elif event_msg == "好感度":
+        msg = "当前亚托莉对你的好感度为{}呢".format(attitude)
     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
 
 

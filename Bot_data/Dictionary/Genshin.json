@@ -2,11 +2,11 @@
   "可莉":
   [
     {
-      "is_keyword": true,
+      "is_keyword": false,
       "need_at": false,
       "msg": ["哒哒哒","啦啦啦","蹦~蹦~炸弹~","轰~轰~火花~"],
       "need_attitude": 0,
-      "img": "",
+      "img": "klee1.jpg",
       "sound": ""
     }
   ]

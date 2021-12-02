@@ -273,6 +273,28 @@
       "sound": ""
     }
   ],
+  "假的":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["真的"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
+  "真的":
+  [
+    {
+      "is_keyword": false,
+      "need_at": false,
+      "msg": ["假的"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
   "要":
   [
     {
