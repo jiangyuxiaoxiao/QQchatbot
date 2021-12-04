@@ -410,6 +410,17 @@
       "sound": ""
     }
   ],
+  "不能发":
+  [
+    {
+      "is_keyword": true,
+      "need_at": false,
+      "msg": ["那发什么？"],
+      "need_attitude": 0,
+      "img": "",
+      "sound": ""
+    }
+  ],
   "测试":
   [
     {

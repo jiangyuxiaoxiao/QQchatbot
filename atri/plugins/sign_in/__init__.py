@@ -60,7 +60,7 @@ async def daily_sign_in(bot: Bot, event: Event, state: T_State):
                       FROM USERS
                       WHERE QID = (?)''',user_id)
     info = list(cursor)
-    bonus = random.randint(0, 100)
+    bonus = random.randint(1, 100)
     print(bonus)
     add_coin = random.randint(5, 100)
     add_attitude = random.randint(1, 20)
