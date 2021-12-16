@@ -56,9 +56,9 @@ async def msg_counter(bot: Bot, event: Event, state: T_State):
                 if probabilty >= probnum :
                     user_counters[user].set_probability(0)
                     user_counters[user].set_count(0)
-                    msg.replace("你", "他")
-                    msg.replace("我","你")
-                    msg.replace("亚托莉","你")
+                    msg = msg.replace("你", "他")
+                    msg = msg.replace("我","你")
+                    msg = msg.replace("亚托莉","你")
                     await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
                     return
                 else:
