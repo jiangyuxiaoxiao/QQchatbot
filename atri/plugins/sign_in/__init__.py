@@ -39,7 +39,7 @@ coin_checker = on_message(priority=61,rule=get_coin(),block=True)
 @daily_sign_in.handle()
 async def daily_sign_in(bot: Bot, event: Event, state: T_State):
     # 连接数据库
-    connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+    connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
     # 创建游标
     cursor = connect.cursor()
 
@@ -75,7 +75,7 @@ async def daily_sign_in(bot: Bot, event: Event, state: T_State):
     update_pack = (date, coin, attitude, event.user_id)
     user_id = event.user_id
     group_id = event.group_id
-    img = ".\\Bot_data\\Image\\atri_daily.jpg"
+    img = "./Bot_data/Image/atri_daily.jpg"
     img = os.path.abspath(img)
     img = urllib.request.pathname2url(img)
     img = "file:" + img
@@ -100,14 +100,14 @@ async def daily_sign_in(bot: Bot, event: Event, state: T_State):
         msg = "[CQ:at,qq={}]签到成功~\n获得{}枚托莉币，当前托莉币{}。\n好感度+{}，当前好感度{}" \
         "[CQ:image,file={}]".format(user_id,add_coin,coin,add_attitude,attitude,img)
     elif bonus < 100:
-        img = ".\\Bot_data\\Image\\atri_yes1.png"
+        img = "./Bot_data/Image/atri_yes1.png"
         img = os.path.abspath(img)
         img = urllib.request.pathname2url(img)
         img = "file:" + img
         msg = "[CQ:at,qq={}]签到大成功！(10%）\n获得{}枚托莉币，当前托莉币{}。\n好感度+{}，当前好感度{}" \
               "[CQ:image,file={}]".format(user_id, add_coin, coin, add_attitude, attitude, img)
     elif bonus == 100:
-        img = ".\\Bot_data\\Image\\atri10.jpg"
+        img = "./Bot_data/Image/atri10.jpg"
         img = os.path.abspath(img)
         img = urllib.request.pathname2url(img)
         img = "file:" + img
@@ -119,7 +119,7 @@ async def daily_sign_in(bot: Bot, event: Event, state: T_State):
 async def coin_checker(bot: Bot, event: Event, state: T_State):
     group_id = event.group_id
     # 连接数据库
-    connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+    connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
     # 创建游标
     cursor = connect.cursor()
 

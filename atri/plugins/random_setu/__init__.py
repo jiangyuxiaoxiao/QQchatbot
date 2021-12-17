@@ -55,7 +55,7 @@ set_name = on_command("色批指定",block=False,priority=250)
 
 filelist = []
 flag = 0
-folder = "D:\\Data\\video\\photo"
+folder = "D:/Data/video/photo"
 imgType_list = {'jpg','bmp','png','jpeg','rgb','tif'}
 setu_status = 1
 

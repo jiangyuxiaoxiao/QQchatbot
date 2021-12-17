@@ -36,7 +36,7 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
     if message_type == 'group' or message_type == 'private':
         # 数据库检索
         # 连接数据库
-        connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+        connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
         # 创建游标
         cursor = connect.cursor()
         # 搜索好感度
@@ -54,7 +54,7 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
             cursor.close()
             connect.close()
             await refresh(bot, event, state)
-            connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+            connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
             cursor = connect.cursor()
             # 搜索好感度
             cursor.execute(
@@ -102,7 +102,7 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
 
                     # 检查是否有图片
                     if not reply["img"] == "":
-                        img = ".\\Bot_data\\Image\\" + reply["img"]
+                        img = "./Bot_data/Image/" + reply["img"]
                         img = os.path.abspath(img)
                         img = urllib.request.pathname2url(img)
                         img = "file:" + img
@@ -110,7 +110,7 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
 
                     # 检查是否有语音
                     if not reply["sound"] == "":
-                        sound = ".\\Bot_data\\Sound\\Sound\\" + reply["sound"]
+                        sound = "./Bot_data/Sound/Sound/" + reply["sound"]
                         sound = os.path.abspath(sound)
                         sound = urllib.request.pathname2url(sound)
                         sound = "file:" + sound
@@ -127,6 +127,6 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
                         print(msg, user_id)
                         await bot.call_api("send_private_msg", **{"user_id": user_id, "message": msg})
                         if not reply["sound"] == "":
-                            await bot.call_api("send_private_msg", **{"group_id": group_id, "message": msg2})
+                            await bot.call_api("send_private_msg", **{"user_id": user_id, "message": msg})
                     break  # 只回复好感度最高的一句
         return

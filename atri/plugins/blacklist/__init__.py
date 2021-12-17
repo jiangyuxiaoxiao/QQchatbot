@@ -20,7 +20,7 @@ refresh = require("database_management").refresh
 
 @black_list_checker_command.handle()
 async def black_list_checker_command(bot: Bot, event: Event, state: T_State):
-    connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+    connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
     # 创建游标
     cursor = connect.cursor()
 
@@ -94,7 +94,7 @@ async def black_list_checker_command(bot: Bot, event: Event, state: T_State):
 
 @black_list_checker_message.handle()
 async def black_list_checker_message(bot: Bot, event: Event, state: T_State):
-    connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+    connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
     # 创建游标
     cursor = connect.cursor()
 
@@ -170,7 +170,7 @@ async def black_list_checker_message(bot: Bot, event: Event, state: T_State):
 async def set_black_list_1(bot: Bot, event: Event, state: T_State):
     # 权限审查
     user_id = (event.user_id,)
-    connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+    connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
     # 创建游标
     cursor = connect.cursor()
     cursor.execute('''SELECT PERMISSION
@@ -204,7 +204,7 @@ async def set_black_list_2(bot: Bot, event: Event, state: T_State):
     QID = QID.replace("]", "")
     QID = int(QID)
     user_id =(QID,)
-    connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+    connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
     # 创建游标
     cursor = connect.cursor()
     cursor.execute('''SELECT *
@@ -234,7 +234,7 @@ async def set_group_black_list(bot: Bot, event: Event, state: T_State):
     if event.message_type == "group":
         group_id = (event.group_id,)
         user_id = (event.user_id,)
-        connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+        connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
         # 创建游标
         cursor = connect.cursor()
         cursor.execute('''SELECT PERMISSION

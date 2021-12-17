@@ -25,7 +25,7 @@ async def update_usersdata():
     # 传入bot对象
     bot = nonebot.get_bot()
     # 连接数据库
-    connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+    connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
     # 创建游标
     cursor = connect.cursor()
     # 群组用户更新 群更新
@@ -109,7 +109,7 @@ async def add_member_to_user_database(bot: Bot, event: Event, state: T_State):
         info = await bot.call_api("get_group_member_info", **{"group_id": group_id, "user_id": member_id})
         member_name = info["nickname"]
         # 连接数据库
-        connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+        connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
         # 创建游标
         cursor = connect.cursor()
         # 判断是否已在数据库内
@@ -132,7 +132,7 @@ async def add_member_to_user_database(bot: Bot, event: Event, state: T_State):
 @command_handler.handle()
 async def refresh_user_database(bot: Bot, event: Event, state: T_State):
     # 连接数据库
-    connect = sqlite3.connect(".\\Bot_data\\SQLite\\Users.db")
+    connect = sqlite3.connect("./Bot_data/SQLite/Users.db")
     # 创建游标
     cursor = connect.cursor()
     ''' # 取消函数中的权限审查，由调用者进行审查

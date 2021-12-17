@@ -35,7 +35,7 @@ dictionary_initial()
 # 初始化插件
 nonebot.load_from_toml("pyproject.toml")
 # 根据插件自定义目录进行初始化
-plugin_dir = ".\\Bot_data\\Plugins_dir\\plugin.json"
+plugin_dir = "./Bot_data/Plugins_dir/plugin.json"
 with open(plugin_dir, encoding="utf-8") as plg_dir:
     plugins = json.load(plg_dir)
     plugins = plugins["Plugin"]["Dir"]

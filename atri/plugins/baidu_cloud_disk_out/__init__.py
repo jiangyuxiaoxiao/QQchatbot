@@ -12,7 +12,7 @@ random_out = on_command("托莉漂流",priority=300,block=True,permission=SUPERU
 
 @command_handler.handle()
 async def netdisk_out_menu(bot: Bot, event: Event, state: T_State):
-    connect = sqlite3.connect(".\\Bot_data\\SQLite\\BaiduCloudDisk.db")
+    connect = sqlite3.connect("./Bot_data/SQLite/BaiduCloudDisk.db")
     # 创建游标
     cursor = connect.cursor()
     cursor.execute("SELECT * FROM BAIDU;")
@@ -71,7 +71,7 @@ async def netdisk_out(bot: Bot, event: Event, state: T_State):
                 await bot.call_api("send_group_msg", **{"group_id": group_id, "message": msg})
                 return
             else:
-                connect = sqlite3.connect(".\\Bot_data\\SQLite\\BaiduCloudDisk.db")
+                connect = sqlite3.connect("./Bot_data/SQLite/BaiduCloudDisk.db")
                 # 创建游标
                 cursor = connect.cursor()
                 ID = int(ID)
@@ -120,7 +120,7 @@ async def netdisk_search_name(bot: Bot, event: Event, state: T_State):
 async def netdisk_searching(bot: Bot, event: Event, state: T_State):
     if event.message_type == "group":
         group_id = event.group_id
-        connect = sqlite3.connect(".\\Bot_data\\SQLite\\BaiduCloudDisk.db")
+        connect = sqlite3.connect("./Bot_data/SQLite/BaiduCloudDisk.db")
         # 创建游标
         cursor = connect.cursor()
         NAME = state["NAME"]
@@ -167,7 +167,7 @@ async def netdisk_searching(bot: Bot, event: Event, state: T_State):
 async def random_out(bot: Bot, event: Event, state: T_State):
     if event.message_type == "group":
         group_id = event.group_id
-        connect = sqlite3.connect(".\\Bot_data\\SQLite\\BaiduCloudDisk.db")
+        connect = sqlite3.connect("./Bot_data/SQLite/BaiduCloudDisk.db")
         # 创建游标
         cursor = connect.cursor()
         # 资源检索

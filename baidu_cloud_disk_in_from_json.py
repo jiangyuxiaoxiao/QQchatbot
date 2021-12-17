@@ -3,7 +3,7 @@ import json
 
 def load_data_to_db():
     # 连接数据库
-    connect = sqlite3.connect(".\\Bot_data\\SQLite\\BaiduCloudDisk.db")
+    connect = sqlite3.connect("./Bot_data/SQLite/BaiduCloudDisk.db")
     # 创建游标
     cursor = connect.cursor()
     # 读取词库目录索引文件
@@ -41,6 +41,6 @@ def load_data_to_db():
         print("录入完毕")
 
 
-indexname = ".\\Bot_data\\BaiduCloudDisk\\index.json"
+indexname = "./Bot_data/BaiduCloudDisk/index.json"
 load_data_to_db()
 

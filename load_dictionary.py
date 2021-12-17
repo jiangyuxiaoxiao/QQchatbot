@@ -2,7 +2,7 @@ import json
 
 dictionary = {}
 
-indexname = ".\\Bot_data\\Dictionary\\index.json"
+indexname = "./Bot_data/Dictionary/index.json"
 
 
 def dictionary_initial():
@@ -14,7 +14,7 @@ def dictionary_initial():
 
         # 遍历读取每个词库
         for dictionary_name in index:
-            dictionary_file = ".\\Bot_data\\Dictionary\\" + dictionary_name + ".json"
+            dictionary_file = "./Bot_data/Dictionary/" + dictionary_name + ".json"
             with open(dictionary_file, encoding="utf-8") as dict_file:
                 dict_piece = json.load(dict_file)
                 # 遍历插入字典

@@ -24,7 +24,7 @@ imgType_list = {'jpg','bmp','png','jpeg','rgb','tif'}
 filelist = []
 
 
-folder = ".\\Bot_data\\card"
+folder = "./Bot_data/card"
 # 随机抽卡
 def findAllFile(base):
     for root, ds, fs in os.walk(base):
