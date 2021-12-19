@@ -41,6 +41,7 @@ with open(plugin_dir, encoding="utf-8") as plg_dir:
     plugins = plugins["Plugin"]["Dir"]
     for plugin in plugins:
         nonebot.load_plugin(plugin)
+
 # Modify some config / config depends on loaded configs
 # 
 # config = driver.config

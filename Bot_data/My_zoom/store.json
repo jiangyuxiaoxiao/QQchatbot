@@ -1,0 +1,23 @@
+{
+  "shop": [
+    {
+      "n": "dog",
+      "name": "\uD83D\uDC15",
+      "price": 2048
+    },
+    {
+      "n": "cat",
+      "name": "\uD83D\uDC08",
+      "price": 1024
+    },
+    {
+      "n": "mouse",
+      "name": "\uD83D\uDC00",
+      "price": 512
+    },
+    {
+      "name": "\uD83D\uDC8C",
+      "price": 512
+    }
+  ]
+}

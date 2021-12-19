@@ -1,0 +1,39 @@
+{
+  "data": ["id","name","dog","cat","mouse","caterpillar"],
+  "name": ["地狱犬\uD83D\uDC15",
+            "幽冥猫\uD83D\uDC08",
+            "利牙鼠\uD83D\uDC00",
+            "铁甲虫\uD83D\uDC1B"],
+  "dog": {
+    "img":"\uD83D\uDC15",
+    "blood": 160,
+    "damage": 20,
+    "defense": 6,
+    "speed": 6,
+    "avoid": 2
+  },
+  "cat": {
+    "img": "\uD83D\uDC08",
+    "blood": 62,
+    "damage": 38,
+    "defense": 3,
+    "speed": 15,
+    "avoid": 9
+  },
+  "mouse": {
+    "img": "\uD83D\uDC00",
+    "blood": 40,
+    "damage": 15,
+    "defense": 5,
+    "speed": 11,
+    "avoid": 15
+  },
+  "caterpillar": {
+    "img": "\uD83D\uDC1B",
+    "blood": 20,
+    "damage": 2,
+    "defense": 2,
+    "speed": 1,
+    "avoid": 1
+  }
+}
