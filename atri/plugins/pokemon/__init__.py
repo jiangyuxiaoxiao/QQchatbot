@@ -7,7 +7,7 @@ import pandas as pd
 
 columns = ["#", "Name", "Type1", "Type2", "Total", "Hp", "Attack", "Defense", "Sp_Atk", "Sp_Def", "Speed",
               "Generation", "Legendary"]
-df = pd.read_csv('Pokemon.csv', names=columns)
+df = pd.read_csv('./atri/plugins/pokemon/Pokemon.csv', names=columns)
 
 is_legend = df.Legendary.to_list()
 del is_legend[0]

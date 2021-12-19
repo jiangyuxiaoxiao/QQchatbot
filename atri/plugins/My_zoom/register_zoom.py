@@ -26,11 +26,17 @@ def register(id, name='未取名'):
     info_tuple = (id,name)
     cursor.execute('''INSERT INTO user(ID,name)
                     VALUES (?,?)''', info_tuple)
+
+    cursor.execute('''INSERT INTO BAG(id,name)
+                    values (?,?)''',info_tuple)
+
     connect.commit()
 
     cursor.execute("select id from user where id={}".format(id))
+    res=cursor.fetchall()
+    cursor.execute("select id from bag where id={}".format(id))
 
-    if len(list(cursor)):
+    if len(list(cursor)) and res:
         cursor.close()
         connect.close()
         return f'''

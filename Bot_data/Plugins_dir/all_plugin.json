@@ -21,7 +21,14 @@
       "My_zoom",
       "music_m",
       "transform_",
-      "welcome"
+      "welcome",
+      "covid",
+      "decoder",
+      "encoder",
+      "joke",
+      "pokemon",
+      "riddle",
+      "text_to_sound"
     ]
   }
 
