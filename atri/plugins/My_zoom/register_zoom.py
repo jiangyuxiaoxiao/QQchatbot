@@ -3,8 +3,8 @@ from nonebot.adapters.cqhttp import Bot, Event
 from nonebot.typing import T_State
 import json
 
-indexname = ".\\Bot_data\\My_zoom\\pat.json"
-cmdb = ".\\Bot_data\\My_zoom\\common.db"
+indexname = "./Bot_data/My_zoom/pat.json"
+cmdb = "./Bot_data/My_zoom/common.db"
 
 
 def register(id, name='未取名'):

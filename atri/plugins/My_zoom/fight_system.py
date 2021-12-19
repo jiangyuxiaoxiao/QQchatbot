@@ -3,10 +3,10 @@ import sqlite3
 import random
 import time
 
-commondb = ".\\Bot_data\\My_zoom\\common.db"
-indexfile = ".\\Bot_data\\My_zoom\\pat.json"
-indexfile_2 = ".\\Bot_data\\My_zoom\\get_pat.json"
-indexfile3 = ".\\Bot_data\\My_zoom\\fight_parameter.json"
+commondb = "./Bot_data/My_zoom/common.db"
+indexfile = "./Bot_data/My_zoom/pat.json"
+indexfile_2 = "./Bot_data/My_zoom/get_pat.json"
+indexfile3 = "./Bot_data/My_zoom/fight_parameter.json"
 
 
 def query_pet(user_id):

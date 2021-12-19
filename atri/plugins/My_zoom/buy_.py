@@ -3,10 +3,10 @@ import json
 import random
 from .get_pat import *
 
-commondb = ".\\Bot_data\\My_zoom\\common.db"
-indexfile = ".\\Bot_data\\My_zoom\\bag.json"
-indexfile1='.\\Bot_data\\My_zoom\\get_pat.json'
-indexfile2 = ".\\Bot_data\\My_zoom\\store.json"
+commondb = "./Bot_data/My_zoom/common.db"
+indexfile = "./Bot_data/My_zoom/bag.json"
+indexfile1='./Bot_data/My_zoom/get_pat.json'
+indexfile2 = "./Bot_data/My_zoom/store.json"
 
 #获取玩家的金币数
 def get_coin(user_id)->int:

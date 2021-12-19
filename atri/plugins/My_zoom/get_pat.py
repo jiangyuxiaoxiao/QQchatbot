@@ -3,8 +3,8 @@ import sqlite3
 import random
 import time
 
-commondb = '.\\Bot_data\\My_zoom\\common.db'
-indexfile = '.\\Bot_data\\My_zoom\\get_pat.json'
+commondb = './Bot_data/My_zoom/common.db'
+indexfile = './Bot_data/My_zoom/get_pat.json'
 
 
 def get_a_new_pat(id):

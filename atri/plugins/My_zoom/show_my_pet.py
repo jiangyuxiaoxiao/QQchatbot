@@ -1,8 +1,8 @@
 import json
 import sqlite3
 
-commondb = ".\\Bot_data\\My_zoom\\common.db"
-indexfile = ".\\Bot_data\\My_zoom\\pat.json"
+commondb = "./Bot_data/My_zoom/common.db"
+indexfile = "./Bot_data/My_zoom/pat.json"
 
 
 def show_pet(user_id):

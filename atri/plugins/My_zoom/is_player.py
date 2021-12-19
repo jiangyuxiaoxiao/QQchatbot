@@ -1,6 +1,6 @@
 import sqlite3
 
-commondb = '.\\Bot_data\\My_zoom\\common.db'
+commondb = './Bot_data/My_zoom/common.db'
 
 
 def isplayer(user_id):

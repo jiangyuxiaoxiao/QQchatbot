@@ -4,7 +4,7 @@ import json
 from nonebot.rule import to_me
 from nonebot.adapters.cqhttp import Bot, Event, GroupDecreaseNoticeEvent, GroupIncreaseNoticeEvent, Message
 
-indexfile = ".\\Bot_data\\Welcome\\welcome.json"
+indexfile = "./Bot_data/Welcome/welcome.json"
 
 welcom = on_notice()
 

@@ -24,7 +24,7 @@ bag = on_command('宠物背包', priority=250, block=True)
 store__ii = on_command('宠物商城', priority=250, block=True)
 use_invitation = on_command('使用邀请函',priority=250,block=True)
 
-db = '.\\Bot_data\\My_zoom\\common.db'
+db = './Bot_data/My_zoom/common.db'
 
 
 @get_id_list.handle()
@@ -200,7 +200,7 @@ async def store(bot: Bot, event: Event, state: T_State):
         await bot.call_api("send_group_msg", **{'group_id': group_id, 'message': msg})
         return
 
-    filename = ".\\Bot_data\\My_zoom\\store.json"
+    filename = "./Bot_data/My_zoom/store.json"
 
     with open(filename, encoding="UTF-8") as fp:
         shop = json.load(fp)
@@ -221,7 +221,7 @@ async def store(bot: Bot, event: Event, state: T_State):
 async def shopping(bot: Bot, event: Event, state: T_State):
     user_id = str(event.user_id)
     group_id = event.group_id
-    filename = ".\\Bot_data\\My_zoom\\store.json"
+    filename = "./Bot_data/My_zoom/store.json"
     with open(filename, encoding="UTF-8") as fp:
         shop = json.load(fp)
         shops = shop["shop"]

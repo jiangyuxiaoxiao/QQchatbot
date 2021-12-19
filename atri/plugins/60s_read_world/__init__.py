@@ -11,7 +11,7 @@ scheduler_read_world = require("nonebot_plugin_apscheduler").scheduler
 
 msg = news_()
 
-indexfile = ".\\Bot_data\\Read_Time\\time.json"
+indexfile = "./Bot_data/Read_Time/time.json"
 with open(indexfile, encoding="utf-8") as fp:
     index = json.load(fp)
     time = index["time"]
