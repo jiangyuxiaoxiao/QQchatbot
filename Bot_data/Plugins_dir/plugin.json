@@ -27,7 +27,12 @@
             "joke",
             "pokemon",
             "riddle",
-            "text_to_sound"
+            "text_to_sound",
+            "bizhi",
+            "news_time",
+            "pillow_trans",
+            "zhanan",
+            "tori_code"
         ]
     }
 }

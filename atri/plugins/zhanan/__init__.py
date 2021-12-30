@@ -7,7 +7,7 @@ import urllib.request
 
 
 #注册一个事件响应器，事件类型为command，
-waifu=on_command("渣男",priority=1)
+waifu=on_command("渣男语录",priority=200)
 
 @waifu.handle()
 async def test_handle(bot: Bot, event: Event, state: T_State):

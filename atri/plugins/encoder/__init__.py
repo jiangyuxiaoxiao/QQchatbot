@@ -8,7 +8,7 @@ from urllib.parse import urlencode
 
 
 #注册一个事件响应器，事件类型为command，
-encoder=on_command("加密",priority=10)
+encoder=on_command("加密",priority=54,block=False)
 @encoder.handle()
 async def test_handle(bot: Bot, event: Event, state: T_State):
     

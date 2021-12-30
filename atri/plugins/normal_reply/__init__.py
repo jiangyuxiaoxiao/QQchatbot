@@ -106,6 +106,7 @@ async def normal_reply(bot: Bot, event: Event, state: T_State):
                         img = os.path.abspath(img)
                         img = urllib.request.pathname2url(img)
                         img = "file:" + img
+                        print(img)
                         msg = msg + "[CQ:image,file={}]".format(img)
 
                     # 检查是否有语音

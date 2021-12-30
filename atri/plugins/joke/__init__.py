@@ -7,7 +7,7 @@ import urllib.request
 
 
 #注册一个事件响应器，事件类型为command，
-joke=on_command("随机笑话",priority=21)
+joke=on_command("随机笑话",priority=55,block=False)
 
 @joke.handle()
 async def test_handle(bot: Bot, event: Event, state: T_State):

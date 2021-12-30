@@ -6,7 +6,7 @@ import urllib.request
 from urllib.parse import urlencode
 
 # 注册一个事件响应器，事件类型为command，
-decoder = on_command("求反密", priority=1)
+decoder = on_command("求反密", priority=53,block=False)
 
 
 @decoder.handle()
